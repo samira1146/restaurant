@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>signup</title>
+</head>
+<body>
+
+<span style="color:red"> {{error}}</span>
+<h1>welcome to my website</h1>
+<h3>please enter your details:</h3>
+
+<form action="/home/signUp/" method="post">
+
+{% csrf_token %}
+{{sign_up_form}}
+
+
+<input type="submit" value="signup">
+</form>
+I already have an account:<a href="/home/login/">login</a>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>menu</title>
+</head>
+<body>
+<h1> Welcome back: {{request.user.first_name}} </h1> | <a href="/home/logout/">logout</a> <br>
+
+you can see the menu:
+<hr>
+pizaa:
+{% for pizza in pizza %}
+<br>
+name:
+{{pizza.name}}
+<br>
+size:
+{{pizza.size}}
+<br>
+price:
+{{pizza.price}}
+<br>
+<a href="/home/topping{{topping.name}}">topping...</a>
+<hr>
+{% endfor %}
+
+</body>
+</html>

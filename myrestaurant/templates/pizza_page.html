@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul>
+
+{% for topping in toppings %}
+    <li><a href="/home/pizza{{topping.pizza.user.name}}/{{topping.name}}/{{topping.name|name}}/"> {{topping.name|name}}</a></li>
+{% endfor %}
+</ul>
+
+
+
+
+
+</body>
+</html>
