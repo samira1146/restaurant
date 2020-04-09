@@ -10,7 +10,7 @@ from .models import Pizza,Topping,Drink
 # Create your views here.
 
 def index(request):
-    return HttpResponse("<h1>WELCOME TO MY RESTAUTANT</h1>")
+    return render(request,'index.html',locals())
 
 def pizza(request):
     if request.user.is_authenticated:
@@ -21,17 +21,23 @@ def pizza(request):
 
 
 def pizza_page(request,id):
-    topping=Topping.objects.get(id=id)
-    return render(request, 'pizza_page.html', locals())
+    if request.user.is_authenticated:
+        try:
+            pizza = Pizza.objects.get(id=id)
+        except Pizza.DoesNotExist:
+            error = "Sorry, we don't have that kind of pizza now"
+        return render(request, 'pizza_page.html', locals())
+    else:
+        return redirect("/home/login/")
 
 
 
 def drink(request):
     return request(request,'drink.html',locals())
 
-def topping(request,name):
-    topping=Topping.objects.get(name=name)
-    return request(request,'topping.html',locals())
+# def topping(request,name):
+#     topping=Topping.objects.filter(name=name)
+#     return request(request,'topping.html',locals())
 
 
 

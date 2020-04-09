@@ -2,16 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{pizza.name}}</title>
 </head>
 <body>
 
-<ul>
+{% if error %}
+ 
+{{error}} - please refer to our menu page <a href="/home/pizza/"> menu</a>
 
-{% for topping in toppings %}
-    <li><a href="/home/pizza{{topping.pizza.user.name}}/{{topping.name}}/{{topping.name|name}}/"> {{topping.name|name}}</a></li>
-{% endfor %}
+{% else %}
+
+<h1>{{pizza.name}} - {{pizza.price}}</h1>
+
+
+<ul>
+{% for topping in pizza.topping.all %}
+{{topping.name}}
+{%endfor%}
 </ul>
+
+{% endif %}
+
+
+
 
 
 
