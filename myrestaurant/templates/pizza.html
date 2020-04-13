@@ -21,7 +21,16 @@ size:
 price:
 {{pizza.price}}
 <br>
-<a href="/home/topping{{topping.name}}">topping...</a>
+<ul>
+{% for topping in pizza.topping.all %}
+<li>
+	{{topping.name}}
+</li>
+
+{%endfor%}
+</ul>
+<br>
+<a href="/home/pizza/{{pizza.id}}/">Details...</a>
 <hr>
 {% endfor %}
 
